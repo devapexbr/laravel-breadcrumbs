@@ -1,6 +1,6 @@
 {
-    "name": "devapexbr/laravel-geo-database",
-    "description": "Laravel Global Geo Info Database",
+    "name": "devapexbr/laravel-breadcrumbs",
+    "description": "Laravel Breadcrumbs",
     "require": {
         "php": ">=7",
         "laravel/framework": ">=5.8"
@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DevApex\\LaravelGeoDatabase\\GeoDatabaseServiceProvider"
+                "DevApex\\LaravelGeoDatabase\\LaravelBreadcrumbsServiceProvider"
             ]
         },
         "branch-alias": {
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DevApex\\LaravelGeoDatabase\\": "src"
+            "DevApex\\LaravelBreadcrumbs\\": "src"
         }
     }
 }
