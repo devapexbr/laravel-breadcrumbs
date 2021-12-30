@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DevApex\\LaravelGeoDatabase\\LaravelBreadcrumbsServiceProvider"
+                "DevApex\\Breadcrumbs\\LaravelBreadcrumbsServiceProvider"
             ]
         },
         "branch-alias": {
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DevApex\\LaravelBreadcrumbs\\": "src"
+            "DevApex\\Breadcrumbs\\": "src"
         }
     }
 }

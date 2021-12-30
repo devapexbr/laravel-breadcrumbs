@@ -1,7 +1,11 @@
 <?php
 
-namespace DevApex\LaravelGeoDatabase;
+namespace DevApex\Breadcrumbs;
 
+use DevApex\Breadcrumbs\Providers\Generator;
+use DevApex\Breadcrumbs\Providers\Manager;
+use DevApex\Breadcrumbs\Components\BreadcrumbsRender;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -38,8 +42,6 @@ class LaravelBreadcrumbsServiceProvider extends ServiceProvider
         // Register Manager class singleton with the app container
         $this->app->singleton(Manager::class, config('breadcrumbs.manager-class'));
 
-        // Register Generator class so it can be overridden
-        $this->app->bind(Generator::class, config('breadcrumbs.generator-class'));
 
     }
 
@@ -56,8 +58,17 @@ class LaravelBreadcrumbsServiceProvider extends ServiceProvider
         ], 'breadcrumbs-config');
 
         //Views
+
+
+
         if($this->app->has('view')){
             $this->loadViewsFrom($this->views_path, 'breadcrumbs');
+
+            $this->loadViewComponentsAs('lb', [
+                BreadcrumbsRender::class,
+            ]);
+
+            Blade::component('breadcrumbs', BreadcrumbsRender::class);
 
             $this->publishes([
                 $this->views_path => resource_path('views/vendor/breadcrumbs'),
@@ -74,7 +85,6 @@ class LaravelBreadcrumbsServiceProvider extends ServiceProvider
      * automatically when bootstrapping the application.
      *
      * @return void
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function registerBreadcrumbs(): void
     {

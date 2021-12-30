@@ -42,9 +42,7 @@ return [
     */
 
     // Manager
-    'manager-class' => Diglactic\Breadcrumbs\Manager::class,
+    'manager-class' => DevApex\Breadcrumbs\Providers\Manager::class,
 
-    // Generator
-    'generator-class' => Diglactic\Breadcrumbs\Generator::class,
 
 ];
